@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "787153671441",
+    "project_id": "glance1",
+    "storage_bucket": "glance1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787153671441:android:0c37f7f60a20424024e8b0",
+        "android_client_info": {
+          "package_name": "com.example.snap"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuSEArovTkh7hP8R4NK1Rshb6fnSx-rVU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

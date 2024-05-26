@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class ChooseLoginRegistrationActivity extends AppCompatActivity {
-// try
+// try test
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

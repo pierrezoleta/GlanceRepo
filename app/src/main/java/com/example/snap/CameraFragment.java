@@ -1,5 +1,7 @@
 package com.example.snap;
 
+import static java.util.Collections.rotate;
+
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
@@ -7,6 +9,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.graphics.Picture;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -32,6 +35,7 @@ import java.util.List;
 public class CameraFragment extends Fragment implements SurfaceHolder.Callback{
 
     Camera camera;
+
     Camera.PictureCallback jpegCallback;
 
     SurfaceView mSurfaceView;
@@ -71,10 +75,12 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback{
             @Override
             public void onClick(View view) {
                 captureImage();
+
             }
         });
 
-        jpegCallback = new Camera.PictureCallback(){
+        jpegCallback = new Camera.PictureCallback() {
+            
             @Override
             public void onPictureTaken(byte[] bytes, Camera camera) {
 
@@ -82,13 +88,15 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback{
 
                 Bitmap rotateBitmap = rotate(decodedBitmap);
 
-                String fileLocation =  SaveImageToStorage(rotateBitmap);
-                if(fileLocation != null){
+                String fileLocation = SaveImageToStorage(rotateBitmap);
+                if(fileLocation!=null){
                     Intent intent = new Intent(getActivity(), ShowCaptureActivity.class);
-//                intent.putExtra("capture", bytes); ///sada
                     startActivity(intent);
                     return;
+
+
                 }
+
 
 
             }
@@ -98,15 +106,15 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback{
         return view;
     }
 
-    public String SaveImageToStorage(Bitmap bitmap){
+    public String SaveImageToStorage(Bitmap bitmap) {
         String fileName = "imageToSend";
-        try{
+        try {
             ByteArrayOutputStream bytes = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
             FileOutputStream fo = getContext().openFileOutput(fileName, Context.MODE_PRIVATE);
             fo.write(bytes.toByteArray());
             fo.close();
-        }catch(Exception e){
+        }catch (Exception e) {
             e.printStackTrace();
             fileName = null;
         }
@@ -120,7 +128,8 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback{
         Matrix matrix = new Matrix();
         matrix.setRotate(90);
 
-        return Bitmap.createBitmap(decodedBitmap, 0,0 , w, h, matrix, true);
+        return Bitmap.createBitmap(decodedBitmap, 0 , 0, w, h, matrix, true);
+
     }
 
     private void captureImage() {
@@ -139,15 +148,14 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback{
         parameters.setPreviewFrameRate(30);
         parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
 
-
         Camera.Size bestSize = null;
         List<Camera.Size> sizeList = camera.getParameters().getSupportedPreviewSizes();
         bestSize = sizeList.get(0);
-
-        for(int i = 1; i < sizeList.size(); i++){
-            if((sizeList.get(i).width * sizeList.get(i).height)> (bestSize.width * bestSize.height)){
+        for (int i = 1; i < sizeList.size(); i++) {
+            if((sizeList.get(i).width * sizeList.get(i).height)>(bestSize.width * bestSize.height)) {
                 bestSize = sizeList.get(i);
             }
+
         }
         parameters.setPreviewSize(bestSize.width, bestSize.height);
 

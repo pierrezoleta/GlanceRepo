@@ -1,5 +1,4 @@
 package com.example.snap.RecyclerViewFollow;
-//nikoru
 import java.sql.Struct;
 
 import kotlin.contracts.Returns;

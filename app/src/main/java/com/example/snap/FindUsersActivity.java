@@ -1,4 +1,5 @@
 package com.example.snap;
+//nikoru
 
 import android.hardware.usb.UsbRequest;
 import android.os.Bundle;

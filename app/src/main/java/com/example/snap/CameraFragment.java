@@ -202,7 +202,7 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback{
         }
     }
 
-
+//nikoru
     private void FindUsers() {
         Intent intent = new Intent(getContext(), FindUsersActivity.class);
         startActivity(intent);

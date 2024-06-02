@@ -1,5 +1,5 @@
 package com.example.snap.RecyclerViewFollow;
-
+//nikoru
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;

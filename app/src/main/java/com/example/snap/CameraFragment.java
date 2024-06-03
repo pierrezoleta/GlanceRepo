@@ -65,6 +65,15 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback{
 
         Button mLogout = view.findViewById(R.id.logout);
         Button mCapture = view.findViewById(R.id.capture);
+        Button mFindUsers = view.findViewById(R.id.findUsers);
+
+        mFindUsers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FindUsers();
+            }
+        });
+
         mLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,6 +113,12 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback{
 
 
         return view;
+    }
+
+    private void FindUsers() {
+        Intent intent = new Intent(getContext(), FindUsersActivity.class);
+        startActivity(intent);
+        return;
     }
 
     public String SaveImageToStorage(Bitmap bitmap) {

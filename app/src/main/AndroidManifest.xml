@@ -18,6 +18,9 @@
         android:theme="@style/Theme.Snap"
         tools:targetApi="31">
         <activity
+            android:name=".FindUsersActivity"
+            android:exported="false" />
+        <activity
             android:name=".ShowCaptureActivity"
             android:exported="false" />
         <activity

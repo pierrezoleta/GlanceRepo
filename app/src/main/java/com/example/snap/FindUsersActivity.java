@@ -2,10 +2,13 @@ package com.example.snap;
 
 import android.hardware.usb.UsbRequest;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -15,6 +18,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.snap.RecyclerViewFollow.RCAdapter;
 import com.example.snap.RecyclerViewFollow.UsersObject;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+
+import org.checkerframework.checker.units.qual.C;
 
 import java.util.ArrayList;
 
@@ -43,10 +55,65 @@ public class FindUsersActivity extends AppCompatActivity {
         mAdapter = new RCAdapter(getDataSet(), getApplication());
         mRecyclerView.setAdapter(mAdapter);
 
+        mSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clear();
+                listenForData();
+            }
+        });
+
+    }
+
+    private void clear() {
+        int size = this.results.size();
+        this.results.clear();
+        mAdapter.notifyItemRangeRemoved(0, size);
+    }
+
+    private void listenForData() {
+        DatabaseReference usersDB = FirebaseDatabase.getInstance().getReference().child("users");
+        Query query = usersDB.orderByChild("email").startAt(mInput.getText().toString()).endAt(mInput.getText().toString() + "\uf8ff");
+        query.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                String email = "";
+                String uid = snapshot.getRef().getKey();
+                if(snapshot.child("email").getValue() != null){
+                    email = snapshot.child("email").getValue().toString();
+                }
+                if(!email.equals(FirebaseAuth.getInstance().getCurrentUser().getEmail())){
+                    UsersObject obj = new UsersObject(email, uid);
+                    results.add(obj);
+                    mAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private ArrayList<UsersObject> results = new ArrayList<>();
     private ArrayList<UsersObject> getDataSet() {
+        listenForData();
         return results;
     }
 }

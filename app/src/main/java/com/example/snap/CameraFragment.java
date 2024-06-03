@@ -72,7 +72,7 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback{
                 LogOut();
             }
         });
-        mLogout.setOnClickListener(new View.OnClickListener() {
+        mFindUsers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FindUsers();

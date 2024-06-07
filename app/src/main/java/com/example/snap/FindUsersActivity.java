@@ -1,6 +1,5 @@
 package com.example.snap;
 
-import android.hardware.usb.UsbRequest;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,14 +9,11 @@ import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.snap.RecyclerViewFollow.RCAdapter;
-import com.example.snap.RecyclerViewFollow.UsersObject;
+import com.example.snap.RecyclerViewFollow.FollowAdapter;
+import com.example.snap.RecyclerViewFollow.FollowUsersObject;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -25,8 +21,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-
-import org.checkerframework.checker.units.qual.C;
 
 import java.util.ArrayList;
 
@@ -52,7 +46,7 @@ public class FindUsersActivity extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getApplication());
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new RCAdapter(getDataSet(), getApplication());
+        mAdapter = new FollowAdapter(getDataSet(), getApplication());
         mRecyclerView.setAdapter(mAdapter);
 
         mSearch.setOnClickListener(new View.OnClickListener() {
@@ -83,7 +77,7 @@ public class FindUsersActivity extends AppCompatActivity {
                     email = snapshot.child("email").getValue().toString();
                 }
                 if(!email.equals(FirebaseAuth.getInstance().getCurrentUser().getEmail())){
-                    UsersObject obj = new UsersObject(email, uid);
+                    FollowUsersObject obj = new FollowUsersObject(email, uid);
                     results.add(obj);
                     mAdapter.notifyDataSetChanged();
                 }
@@ -111,8 +105,8 @@ public class FindUsersActivity extends AppCompatActivity {
         });
     }
 
-    private ArrayList<UsersObject> results = new ArrayList<>();
-    private ArrayList<UsersObject> getDataSet() {
+    private ArrayList<FollowUsersObject> results = new ArrayList<>();
+    private ArrayList<FollowUsersObject> getDataSet() {
         listenForData();
         return results;
     }

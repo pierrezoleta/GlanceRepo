@@ -1,12 +1,10 @@
 package com.example.snap.RecyclerViewFollow;
 //nikoru
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.snap.R;
@@ -16,25 +14,25 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
-public class RCAdapter extends RecyclerView.Adapter<RCViewHolders> {
+public class FollowAdapter extends RecyclerView.Adapter<FollowViewHolders> {
 
-    private List<UsersObject> usersList;
+    private List<FollowUsersObject> usersList;
     private Context context;
 
 
-    public RCAdapter (List<UsersObject> usersList, Context context){
+    public FollowAdapter(List<FollowUsersObject> usersList, Context context){
         this.usersList = usersList;
         this.context = context;
     }
     @Override
-    public RCViewHolders onCreateViewHolder( ViewGroup parent, int viewType) {
+    public FollowViewHolders onCreateViewHolder(ViewGroup parent, int viewType) {
         View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_followers_item, null);
-        RCViewHolders rcv = new RCViewHolders(layoutView);
+        FollowViewHolders rcv = new FollowViewHolders(layoutView);
         return rcv;
     }
 
     @Override
-    public void onBindViewHolder(RCViewHolders holder, int position) {
+    public void onBindViewHolder(FollowViewHolders holder, int position) {
         holder.mEmail.setText(usersList.get(position).getEmail());
 
         if (UserInformation.listFollowing.contains(usersList.get(holder.getLayoutPosition()).getUid())){

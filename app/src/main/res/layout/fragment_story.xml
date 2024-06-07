@@ -3,14 +3,20 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/design_default_color_primary_dark">
+    android:orientation="vertical"
+    >
+<Button
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="refresh"
+    android:id="@+id/refresh"
+/>
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Story fragment"
-        android:gravity="center"
-        android:textColor="@android:color/white"/>
+        android:layout_height="wrap_content"
+        android:id="@+id/recyclerView"
+        android:scrollbars="vertical"/>
 
 
 </LinearLayout>

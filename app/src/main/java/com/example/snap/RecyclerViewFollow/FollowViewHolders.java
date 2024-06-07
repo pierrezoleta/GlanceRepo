@@ -7,13 +7,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.snap.R;
 
-import java.nio.file.attribute.UserDefinedFileAttributeView;
-
-public class RCViewHolders extends RecyclerView.ViewHolder{
+public class FollowViewHolders extends RecyclerView.ViewHolder{
     public TextView mEmail;
     public Button mFollow;
 
-    public RCViewHolders(View itemView) {
+    public FollowViewHolders(View itemView) {
         super (itemView);
         mEmail = itemView.findViewById(R.id.email);
         mFollow = itemView.findViewById(R.id.follow);

@@ -108,4 +108,3 @@ public class StoryFragment extends Fragment {
         }
     }
 }
-y

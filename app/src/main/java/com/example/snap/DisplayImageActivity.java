@@ -57,7 +57,7 @@ public class DisplayImageActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String imageUrl = "";
-                for(DataSnapshot chatSnapshot: snapshot.child("story").getChildren()){
+                for(DataSnapshot chatSnapshot: snapshot.getChildren()){
                     if (chatSnapshot.child("imageUrl").getValue() !=null){
                         imageUrl = chatSnapshot.child("imageUrl").getValue().toString();
                     }

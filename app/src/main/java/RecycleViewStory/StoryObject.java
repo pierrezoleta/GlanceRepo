@@ -16,8 +16,8 @@ public class StoryObject {
     public String getEmail() { return email; }
     public void setEmail(String email) {this.email = email; }
 
-    public String getchatOrStory() { return chatOrStory; }
-    public void setchatOrStory(String chatOrStory) {this.chatOrStory = chatOrStory; }
+    public String getChatOrStory() { return chatOrStory; }
+    public void setChatOrStory(String chatOrStory) {this.chatOrStory = chatOrStory; }
         public boolean equals(Object obj){
 
         boolean same = false;

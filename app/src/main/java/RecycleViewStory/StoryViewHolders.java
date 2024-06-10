@@ -27,7 +27,7 @@ public class StoryViewHolders extends RecyclerView.ViewHolder implements View.On
         Intent intent = new Intent(view.getContext(), DisplayImageActivity.class);
         Bundle b = new Bundle();
         b.putString("userId",mEmail.getTag().toString());
-        b.putString("chatOrStory",mLayout   .getTag().toString());
+        b.putString("chatOrStory",mLayout.getTag().toString());
         intent.putExtras(b);
         view.getContext().startActivity(intent);
     }

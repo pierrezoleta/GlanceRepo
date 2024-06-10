@@ -18,6 +18,9 @@
         android:theme="@style/Theme.Snap"
         tools:targetApi="31">
         <activity
+            android:name=".ChooseReceiverActivity"
+            android:exported="false" />
+        <activity
             android:name=".ForgetPasswordActivity"
             android:exported="false" />
         <activity

@@ -16,7 +16,7 @@ public class ChooseLoginRegistrationActivity extends AppCompatActivity {
 
         Button mLogin = findViewById(R.id.login);
         Button registration = findViewById(R.id.registration);
-
+        Button mforgetPassword = findViewById(R.id.forgetpassword);
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -30,6 +30,15 @@ public class ChooseLoginRegistrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplication(),RegistrationActivity.class);
+                startActivity(intent);
+                return;
+            }
+        });
+
+        mforgetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplication(),ForgetPasswordActivity.class);
                 startActivity(intent);
                 return;
             }

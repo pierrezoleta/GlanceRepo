@@ -13,6 +13,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,7 +26,7 @@ import RecycleViewStory.StoryObject;
 
 public class DisplayImageActivity extends AppCompatActivity {
 
-    String userId;
+    String userId, chatOrStory;
     private ImageView mImage;
     private boolean started = false;
     @Override
@@ -36,34 +37,66 @@ public class DisplayImageActivity extends AppCompatActivity {
 
         Bundle b = getIntent().getExtras();
         userId = b.getString("userId");
+        chatOrStory = b.getString("chatOrStory");
 
         mImage = findViewById(R.id.image);
 
-        listenForData();
+        switch (chatOrStory){
+            case "chat":
+                listenForChat();
+                break;
+            case "story":
+                listenForStory();
+        }
 
+    }
+
+    private void listenForChat() {
+        DatabaseReference chatDb = FirebaseDatabase.getInstance().getReference().child("users").child(FirebaseAuth.getInstance().getUid()).child("received").child(userId);
+        chatDb.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String imageUrl = "";
+                for(DataSnapshot chatSnapshot: snapshot.child("story").getChildren()){
+                    if (chatSnapshot.child("imageUrl").getValue() !=null){
+                        imageUrl = chatSnapshot.child("imageUrl").getValue().toString();
+                    }
+                        imageUrlList.add(imageUrl);
+                        if(!started){
+                            started = true;
+                            initializeDisplay();
+                        }
+                        chatDb.child(chatSnapshot.getKey()).removeValue();
+                    }
+                }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     ArrayList<String> imageUrlList  = new ArrayList<>();
 
-    private void listenForData(){
-
-
-            DatabaseReference followingStoryDb= FirebaseDatabase.getInstance().getReference().child("users").child(userId);
+    private void listenForStory(){
+        DatabaseReference followingStoryDb= FirebaseDatabase.getInstance().getReference().child("users").child(userId);
             followingStoryDb.addValueEventListener(new ValueEventListener() {
                 @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     String imageUrl = "";
                     long timestampBeg=0;
                     long timestampEnd=0;
-                    for(DataSnapshot storySnapchot : snapshot.child("story").getChildren()){
-                        if (storySnapchot.child("timestampBeg").getValue() !=null){
-                            timestampBeg = Long.parseLong(storySnapchot.child("timestampBeg").getValue().toString());
+                    for(DataSnapshot storySnapshot : dataSnapshot.child("story").getChildren()){
+                        if (storySnapshot.child("timestampBeg").getValue() !=null){
+                            timestampBeg = Long.parseLong(storySnapshot.child("timestampBeg").getValue().toString());
                         }
-                        if (storySnapchot.child("timestampEnd").getValue() !=null){
-                            timestampEnd = Long.parseLong(storySnapchot.child("timestampEnd").getValue().toString());
+                        if (storySnapshot.child("timestampEnd").getValue() !=null){
+                            timestampEnd = Long.parseLong(storySnapshot.child("timestampEnd").getValue().toString());
                         }
-                        if (storySnapchot.child("imageUrl").getValue() !=null){
-                            imageUrl = storySnapchot.child("imageUrl").getValue().toString();
+                        if (storySnapshot.child("imageUrl").getValue() !=null){
+                            imageUrl = storySnapshot.child("imageUrl").getValue().toString();
                         }
 
                         long timestampCurrent =System.currentTimeMillis();

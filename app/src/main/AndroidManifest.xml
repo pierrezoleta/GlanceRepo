@@ -18,6 +18,9 @@
         android:theme="@style/Theme.Snap"
         tools:targetApi="31">
         <activity
+            android:name=".SplashScreenActivity"
+            android:exported="false" />
+        <activity
             android:name=".ChooseReceiverActivity"
             android:exported="false" />
         <activity
@@ -42,7 +45,7 @@
             android:name=".ChooseLoginRegistrationActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".LegitSplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

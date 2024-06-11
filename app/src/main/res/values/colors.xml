@@ -2,4 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="snapcameragray">#6e757d</color>
+    <color name="snapyellow">#FEFD02</color>
+    <color name="snapblue">#10acff</color>
+    <color name="snapdarkgray">#363636</color>
+    <color name="snaplightgrey">#f7f7f7</color>
+    <color name="snapgray">#ececec</color>
+
+
 </resources>

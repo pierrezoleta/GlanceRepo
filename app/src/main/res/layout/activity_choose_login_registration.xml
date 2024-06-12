@@ -5,37 +5,66 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ChooseLoginRegistrationActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/snapyellow"
+    android:padding="25dp">
 
 
-    <Button
-        android:id="@+id/login"
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/glance_logo"
+        android:layout_gravity="center"
+        android:layout_weight="1" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="55dp">
+        android:orientation="vertical">
 
-    </Button>
-    <Button
-        android:id="@+id/registration"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Registration"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        <Button
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/white"
+            android:fontFamily="@font/avenirnextcyr_bold"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:text="Continue with Email"
+            android:textColor="@color/snapdarkgray"
+            android:textSize="18sp"
+            app:rippleColor="#E6E6E6"
+            />
+<!--        tools:layout_editor_absoluteX="0dp"-->
+<!--        tools:layout_editor_absoluteY="55dp">-->
 
-    </Button>
-    <Button
-        android:id="@+id/forgetpassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Forget Password"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+            <Button
+                android:id="@+id/registration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sign Up"
+                android:layout_weight="1"
+                android:backgroundTint="@color/snapblue"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:textSize="18sp"
+                android:fontFamily="@font/avenirnextcyr_bold"/>
+<!--            app:layout_constraintTop_toTopOf="parent"-->
 
-    </Button>
+            <Button
+                android:id="@+id/forgetpassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Forget your password? Reset here"
+                android:layout_weight="1"
+                android:backgroundTint="@color/snapyellow"
+                android:textColor="@color/snapdarkgray"
+                android:textSize="12sp"
+                android:fontFamily="@font/avenirnextcyr_bold"/>
+<!--            app:layout_constraintTop_toTopOf="parent"-->
 
-
+    </LinearLayout>
 
 </LinearLayout>

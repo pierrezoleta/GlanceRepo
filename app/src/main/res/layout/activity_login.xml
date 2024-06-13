@@ -9,11 +9,15 @@
     android:background="@color/white"
     android:padding="25dp">
 
-    <Button
+    <ImageButton
         android:id="@+id/back_placeholder"
-        android:layout_width="55dp"
-        android:layout_height="wrap_content"
-        android:text="b" />
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/back_icon_grey"
+        android:background="@drawable/rounded_back_button_gray"
+        app:backgroundTint="#ececec"
+       />
+
 
     <TextView
         android:id="@+id/login_text"
@@ -81,7 +85,7 @@
         android:textColor="@color/snapblue"
         android:textSize="12sp"
         android:text="Forget your password?"
-        android:textFontWeight="500"/>
+        android:fontFamily="@font/avenirnextcyr_demi"/>
 
 
     <LinearLayout
@@ -99,7 +103,8 @@
             android:paddingBottom="15dp"
             android:text="Log In"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:fontFamily="@font/avenirnextcyr_bold"/>
+
 
     </LinearLayout>
 

@@ -10,5 +10,6 @@
     <color name="snaplightgray">#9297A8</color>
     <color name="snapgray">#ececec</color>
     <color name="snapborder">#CACACA</color>
+    <color name="snapbackbuttongray">#ececec</color>
 
 </resources>

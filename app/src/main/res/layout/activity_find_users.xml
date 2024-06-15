@@ -5,12 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FindUsersActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white">
 /
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp">
         <EditText
             android:layout_weight="1"
             android:layout_width="0dp"
@@ -21,7 +25,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/search"
-            android:text="Search"/>
+            android:text="Search"
+            android:backgroundTint="@color/snapblue"/>
     </LinearLayout>
 
     <View
@@ -33,7 +38,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/recyclerView"
-        android:scrollbars="vertical">
+        android:scrollbars="vertical"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp">
 
 
     </androidx.recyclerview.widget.RecyclerView>

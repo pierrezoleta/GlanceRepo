@@ -13,6 +13,7 @@ import android.graphics.Picture;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -25,6 +26,8 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.ByteArrayOutputStream;
@@ -63,21 +66,67 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback{
             mSurfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
         }
 
-        Button mLogout = view.findViewById(R.id.logout);
-        Button mFindUsers = view.findViewById(R.id.findUsers);
+
+
+        BottomNavigationView bottomNavigationView = view.findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                // Prevent selection by returning false
+                bottomNavigationView.getMenu().findItem(R.id.invisible).setChecked(true);
+                bottomNavigationView.getMenu().findItem(R.id.action_find_users).setChecked(false);
+                bottomNavigationView.getMenu().findItem(R.id.action_logout).setChecked(false);
+
+                return true;
+            }
+        });
+        bottomNavigationView.getMenu().findItem(R.id.invisible).setChecked(true);
+        clearBottomNavigationViewSelection(bottomNavigationView);
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                // Handle item selection
+                switch (item.getItemId()) {
+                    case R.id.action_logout:
+                        // Handle logout button click
+                        bottomNavigationView.getMenu().findItem(R.id.action_find_users).setChecked(false);
+                        bottomNavigationView.getMenu().findItem(R.id.action_logout).setChecked(false);
+                        bottomNavigationView.getMenu().findItem(R.id.invisible).setChecked(true);
+
+
+                        LogOut();
+                        return true;
+                    case R.id.action_find_users:
+                        // Handle find users button click
+                        bottomNavigationView.getMenu().findItem(R.id.action_find_users).setChecked(false);
+                        bottomNavigationView.getMenu().findItem(R.id.action_logout).setChecked(false);
+                        bottomNavigationView.getMenu().findItem(R.id.invisible).setChecked(true);
+
+
+                        FindUsers();
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        });
+
+//        Button mLogout = view.findViewById(R.id.logout);
+//        Button mFindUsers = view.findViewById(R.id.findUsers);
         Button mCapture = view.findViewById(R.id.capture);
-        mLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                LogOut();
-            }
-        });
-        mFindUsers.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FindUsers();
-            }
-        });
+//        mLogout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                LogOut();
+//            }
+//        });
+//        mFindUsers.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                FindUsers();
+//            }
+//        });
         mCapture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -216,6 +265,14 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback{
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         return;
+    }
+
+    private void clearBottomNavigationViewSelection(BottomNavigationView bottomNavigationView) {
+        bottomNavigationView.getMenu().setGroupCheckable(0, false, true);
+        for (int i = 0; i < bottomNavigationView.getMenu().size(); i++) {
+            bottomNavigationView.getMenu().getItem(i).setChecked(false);
+        }
+        bottomNavigationView.getMenu().setGroupCheckable(0, true, true);
     }
 
 

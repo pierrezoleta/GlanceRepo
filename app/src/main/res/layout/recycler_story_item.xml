@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="match_parent"
+<LinearLayout
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackground"
-        android:padding="20sp"
-        android:id="@+id/layout">
+        android:src="@drawable/baseline_account_circle_24"
+        android:padding="10dp"
+        android:id="@+id/layout"
+        android:background="@drawable/story_border"
+        android:layout_marginBottom="10dp">
+<!--        android:background="?attr/selectableItemBackground"-->
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/baseline_account_circle_24"
             android:layout_gravity="center"
-            android:paddingRight="25dp"/>
+            android:paddingRight="15dp"/>
+
         <TextView
             android:textStyle="bold"
             android:textColor="@color/black"
@@ -23,7 +30,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Large text"
-            android:textSize="20dp"
+            android:textSize="14sp"
+            android:layout_gravity="center_vertical"
+            />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+        </View>
+
+
+
+        <ImageButton
+            android:id="@+id/search"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/right_arrow_icon"
+            android:background="@color/white"
             />
     </LinearLayout>
 </LinearLayout>

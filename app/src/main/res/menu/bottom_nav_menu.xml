@@ -2,12 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/action_logout"
-        android:icon="@drawable/baseline_account_circle_24"
+        android:icon="@drawable/log_out_icon"
         android:title="Logout" />
     <item
         android:id="@+id/action_find_users"
-        android:icon="@drawable/baseline_account_circle_24"
-        android:title="Find Users" />
+        android:title="Find Users"
+        android:icon="@drawable/friend_blue_icon"
+        />
+<!--        android:icon="@drawable/baseline_account_circle_24"-->
+
     <item
         android:id="@+id/invisible"
         android:visible="false"

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -39,7 +40,8 @@ public class FindUsersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_find_users);
 
         mInput = findViewById(R.id.input);
-        Button mSearch = findViewById(R.id.search);
+//        Button mSearch = findViewById(R.id.search);
+        ImageButton mSearch = findViewById(R.id.search);
 
         mRecyclerView = findViewById(R.id.recyclerView);
         mRecyclerView.setNestedScrollingEnabled(false);

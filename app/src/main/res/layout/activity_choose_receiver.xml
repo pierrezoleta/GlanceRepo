@@ -6,20 +6,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ChooseReceiverActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="25dp"
+    android:background="@color/snapbggray">
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Stories"
+            android:textSize="18sp"
+            android:fontFamily="@font/avenirnextcyr_demi"
+            android:layout_marginBottom="5dp"/>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add a snap to my story"
+            android:textSize="13sp"
+            android:fontFamily="@font/avenirnextcyr_medium"
+            android:textColor="@color/snaplightgray"
+            android:layout_marginBottom="10dp"/>
 
     <LinearLayout
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:padding="10sp">
+        android:background="@drawable/edit_text_border"
+        android:padding="10sp"
+        android:layout_marginBottom="20dp"
+        >
 
         <TextView
             android:textStyle="bold"
@@ -33,25 +53,45 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_weight="1">
-
         </View>
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:id="@+id/story">
-
+            android:id="@+id/story"
+            android:button="@null"
+            android:drawableStart="@drawable/image_checkbox"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp" >
         </CheckBox>
 
     </LinearLayout>
-    
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/recyclerView">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Friends"
+            android:textSize="18sp"
+            android:fontFamily="@font/avenirnextcyr_demi"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Send Snap directly to a friend"
+            android:textSize="13sp"
+            android:fontFamily="@font/avenirnextcyr_medium"
+            android:textColor="@color/snaplightgray"
+            android:layout_marginBottom="10dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            >
+
+        </androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -60,7 +100,8 @@
         android:layout_margin="16sp"
         android:id="@+id/fab"
         android:layout_gravity="bottom|end"
-        android:src="@drawable/baseline_play_arrow_24"
+        android:src="@drawable/send_icon"
+        android:backgroundTint="@color/snapblue"
         >
 
     </com.google.android.material.floatingactionbutton.FloatingActionButton>

@@ -28,9 +28,10 @@
        app:layout_constraintBottom_toBottomOf="parent"
        app:layout_constraintStart_toStartOf="parent"
        app:layout_constraintEnd_toEndOf="parent"
+       app:itemIconTint="@color/snapblue"
        android:background="@color/black"
        app:itemTextColor="@color/white"
-       android:elevation="0dp"/>
+       android:elevation="10dp"/>
 
    <androidx.appcompat.widget.AppCompatButton
 

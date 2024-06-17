@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -46,7 +47,8 @@ public class StoryFragment extends Fragment {
         mAdapter = new StoryAdapter(getDataSet(), getContext());
         mRecyclerView.setAdapter(mAdapter);
 
-        Button mRefresh = view.findViewById(R.id.refresh);
+//        Button mRefresh = view.findViewById(R.id.refresh);
+        ImageButton mRefresh = view.findViewById(R.id.refresh);
         mRefresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

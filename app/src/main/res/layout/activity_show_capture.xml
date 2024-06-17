@@ -5,20 +5,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ShowCaptureActivity">
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
         android:id="@+id/imageCaptured" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Send Image"
-        android:layout_gravity="bottom"
-        android:id="@+id/send"
-        android:background="@drawable/rounded_button_blue"
-        />
+        android:layout_height="match_parent"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:paddingBottom="25dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/send"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@drawable/rounded_button_blue"
+            android:fontFamily="@font/avenirnextcyr_bold"
+            android:text="Send Image"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+
 
 
 </FrameLayout>

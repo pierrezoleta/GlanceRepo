@@ -4,19 +4,56 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="25dp"
+    android:background="@color/snapbggray"
     >
-<Button
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="refresh"
-    android:id="@+id/refresh"
-/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Stories"
+            android:textSize="18sp"
+            android:fontFamily="@font/avenirnextcyr_demi"
+            android:layout_gravity="center_vertical"
+            />
+
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
+
+        <ImageButton
+            android:id="@+id/refresh"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/refresh_icon"
+            android:background="@drawable/rounded_back_button_gray"
+            />
+
+<!--        <Button-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="refresh"-->
+<!--            android:id="@+id/refresh"-->
+<!--            android:layout_marginBottom="20dp"-->
+<!--            />-->
+    </LinearLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/recyclerView"
-        android:scrollbars="vertical"/>
+        android:scrollbars="none"/>
 
 
 </LinearLayout>

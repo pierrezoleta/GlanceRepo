@@ -3,22 +3,23 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:padding="10sp">
+        android:background="@drawable/edit_text_border"
+        android:padding="10sp"
+        android:layout_marginBottom="10dp">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/baseline_account_circle_24"
             android:layout_gravity="center"
-            android:paddingRight="25dp"/>
+            android:paddingRight="15dp"/>
 
         <TextView
             android:textStyle="bold"
@@ -27,7 +28,7 @@
             android:id="@+id/email"
 
             android:text="Large Text"
-            android:textSize="14dp"/>
+            android:textSize="14sp"/>
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -38,9 +39,11 @@
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:id="@+id/receive">
-
+            android:id="@+id/receive"
+            android:button="@null"
+            android:drawableStart="@drawable/image_checkbox"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp" >
         </CheckBox>
 
     </LinearLayout>

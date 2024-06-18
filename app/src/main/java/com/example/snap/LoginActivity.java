@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,6 +23,8 @@ import java.util.concurrent.Executor;
 public class LoginActivity extends AppCompatActivity {
 
     private Button mLogin;
+    private Button mForgot;
+    private ImageButton mBack;
     private EditText mEmail, mPassword;
 
     private FirebaseAuth mAuth;
@@ -47,11 +50,31 @@ public class LoginActivity extends AppCompatActivity {
             }
         };
 
+
+
         mAuth = FirebaseAuth.getInstance();
 
         mLogin = findViewById(R.id.login);
         mEmail = findViewById(R.id.email);
         mPassword = findViewById(R.id.password);
+        mForgot = findViewById(R.id.forgetpassword);
+
+
+        mBack = findViewById(R.id.back);
+        mBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        mForgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplication(),ForgetPasswordActivity.class);
+                startActivity(intent);
+                return;
+            }
+        });
 
         // checks the firebase if email pass is correct
         mLogin.setOnClickListener(new View.OnClickListener() {

@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -21,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class ForgetPasswordActivity extends AppCompatActivity {
 
     private EditText editTextEmail;
+    private ImageButton mBack;
     private Button buttonResetPassword;
     private FirebaseAuth mAuth;
 
@@ -33,6 +35,16 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         editTextEmail = findViewById(R.id.emailforget);
         buttonResetPassword = findViewById(R.id.buttonforget);
         mAuth = FirebaseAuth.getInstance();
+
+
+        mBack = findViewById(R.id.back);
+
+        mBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         buttonResetPassword.setOnClickListener(new View.OnClickListener() {
             @Override

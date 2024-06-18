@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,6 +30,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
     private Button mRegistration;
     private EditText mEmail, mPassword, mName;
+    private ImageButton mBack;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthStateListener;
@@ -52,6 +54,14 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         };
 
+
+        mBack = findViewById(R.id.back);
+        mBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
 
         mAuth = FirebaseAuth.getInstance();
@@ -89,6 +99,8 @@ public class RegistrationActivity extends AppCompatActivity {
                             reference.child(userId);
 
                             currentUserDb.updateChildren(userInfo);
+
+
 
                         }
                     }
